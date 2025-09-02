@@ -77,3 +77,20 @@ addToCartBtns.forEach(btn => {
         console.log("Item added to cart! Total items: " + cartItemCount);
     });
 });
+
+// FIX: Smooth scrolling for navigation links
+const navLinks = document.querySelectorAll('.header__nav a');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+        // Get the href attribute (e.g., "#menu")
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        // Check if the element exists
+        if (targetElement) {
+            e.preventDefault(); // Prevent the default link behavior
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
